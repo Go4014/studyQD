@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 模版 不是单纯的html标签 -->
+    <!-- 模版由两部分组成 html + js -->
+    <div id="app">
+        <!-- 插值语法 修改模版中的内容 -->
+        <h1>{{str}}</h1>
+        <h1>{{str.toUpperCase()}}</h1>
+        <!-- 指令语法 用来修改模版当中标签的（属性 内容 样式）-->
+
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+       const vm = new Vue({
+            el: '#app',
+            data: {
+                str: 'abcd'
+            }
+        })
+        //数据代理
+        // vm身上也有data当中的同名的属性 因为 vm代理了data里面的数据
+
+    </script>
+</body>
+
+</html>

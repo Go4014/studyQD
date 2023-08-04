@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        姓：<input type="text" v-model:value="firstName">
+        名：<input type="text" v-model:value="lastName">
+        <!-- p标签展示全名 -->
+        <!-- 第一种 使用js拼接  面试考 开发不用-->
+        <p>{{firstName + '-' + lastName}}</p>
+        <!-- 第二种 封装函数去写  面试考 开发不用 -->
+        <p>{{getFullName()}}</p>
+
+        <!-- 重点 计算属性 -->
+        <p>{{fullName}}</p>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    firstName: "cai",
+                    lastName: "xukun"
+                }
+            },
+            // 方法
+            methods: {
+                getFullName() {
+                    // this指向vm
+                    return this.firstName + '-' + this.lastName
+                }
+            },
+            // 计算属性
+            computed: {
+                fullName: {
+                    get() {
+                        return this.firstName + '-' + this.lastName
+                    },
+                    set() { }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

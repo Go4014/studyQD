@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        用户名：<input type="text" v-model="userInfo.username">
+        <br>
+        密码：<input type="password" v-model="userInfo.password">
+        <br>
+        性别：
+        <input type="radio" name="sex" value="male" id="male" v-model="userInfo.sex">
+        <label for="male">男</label>
+        <input type="radio" name="sex" value="female" id="female" v-model="userInfo.sex">
+        <label for="female">女</label>
+        <br>
+        爱好：
+        <input type="checkbox" name="like" value="sing" id="sing" v-model="userInfo.like">
+        <label for="sing">唱歌</label>
+        <input type="checkbox" name="like" value="dance" id="dance" v-model="userInfo.like">
+        <label for="dance">跳舞</label>
+        <input type="checkbox" name="like" value="game" id="game" v-model="userInfo.like">
+        <label for="game">打游戏</label>
+        <br>
+        <button @click="submit">提交</button>
+
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    userInfo: {
+                        username: '',
+                        password: '',
+                        sex: '',
+                        like: []
+                    }
+                }
+            },
+            methods: {
+                submit() {
+                    axios({
+                        url: "http://www.go.com",
+                        method: "post",
+                        data: this.userInfo
+                    })
+                }
+            }
+
+        })
+    </script>
+</body>
+
+
+</html>

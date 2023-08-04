@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(person,index) in persons" :key="person.id">
+                {{person.id}} -{{person.name}}-{{person.age}}
+            </li>
+        </ul>
+        <button @click="update">点击我变名</button>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                persons: [
+                    { id: 1, name: 'zhaoliying', age: 33 },
+                    { id: 2, name: 'yangmi', age: 34 },
+                    { id: 3, name: 'qiwei', age: 40 },
+                    { id: 4, name: 'dilireba', age: 20 }
+                ]
+            },
+            methods: {
+                update() {
+                    //1、直接修改对象属性值
+                    // this.persons[0].name = "liuyifei"
+
+                    //2、直接修改数组的值不行
+                    // this.persons[0] = { id: 1, name: 'liuyifei', age: 33 }
+
+                    //3、push  pop  shift  unshift  splice
+                    this.persons.splice(0, 1, { id: 1, name: 'liuyifei', age: 33 })
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>

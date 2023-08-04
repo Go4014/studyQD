@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        用户名：<input type="text" v-model="userInfo.username">
+        <br>
+        密码：<input type="password" v-model="userInfo.password">
+        <br>
+        性别：
+        <input type="radio" name="sex" value="male" v-model="userInfo.sex">男
+        <input type="radio" name="sex" value="female" v-model="userInfo.sex">女
+        <br>
+        爱好：
+        <input type="checkbox" name="like" value="sing" v-model="userInfo.fav">唱歌
+        <input type="checkbox" name="like" value="dance" v-model="userInfo.fav">跳舞
+        <input type="checkbox" name="like" value="draw" v-model="userInfo.fav">画画
+        <button @click="submit">提交</button>
+
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    userInfo: {
+                        username: '',
+                        password: '',
+                        sex: '',
+                        fav: []
+                    }
+                }
+            },
+            methods: {
+                submit() {
+                    axios({
+                        url: '后台的接口地址',
+                        method: 'post',
+                        data: this.userInfo
+
+                    })
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

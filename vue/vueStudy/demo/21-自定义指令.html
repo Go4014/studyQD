@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p v-html="msg"></p>
+        <p v-upper="msg"></p>
+    </div>
+    <div id="app1">
+        <p v-html="msg"></p>
+        <p v-upper="msg"></p>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        // 全局自定义指令
+        // Vue.directive('upper', function (node, bindings) {
+        //     console.log(node, bindings);
+        //     node.textContent = bindings.value.toUpperCase()
+        // })
+        new Vue({
+            el: '#app',
+            data: {
+                msg: "happy"
+            },
+            directives: {
+                upper(node, bindings) {
+                    node.textContent = bindings.value.toUpperCase()
+                }
+            }
+        })
+
+        new Vue({
+            el: '#app1',
+            data: {
+                msg: "happy"
+            }
+        })
+    </script>
+</body>
+
+</html>

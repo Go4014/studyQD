@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p v-text="message"></p>
+        <p v-html="message"></p>
+        <!-- ref是vue中提供的标识数据  理解成css id -->
+        <p ref="pp"></p>
+        <button @click="test">点击获取最后一个p标签</button>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    msg: '你好',
+                    message: '<h1>大家好</h1>'
+                }
+            },
+            methods: {
+                test() {
+                    console.log(this.$refs.pp);
+                    // this.$refs.pp.innerText = "马上就下课了"
+                    this.$refs.pp.innerHTML = "<h1>马上就下课了</h1>"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

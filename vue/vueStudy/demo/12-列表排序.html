@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(person,index) in newPersons" :key="person.id">
+                {{person.id}}---{{person.name}} ---{{person.age}}
+            </li>
+        </ul>
+        <button @click="test(0)">年龄升序</button>
+        <button @click="test(1)">年龄降序</button>
+        <button @click="test(2)">年龄原排序</button>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    persons: [
+                        { id: 1, name: '赵四', age: 50 },
+                        { id: 2, name: '刘能', age: 57 },
+                        { id: 3, name: '宋小宝', age: 45 },
+                        { id: 4, name: '小沈阳', age: 48 },
+                    ],
+                    sortType: 2,//0 1 2,
+                    keyword: ''
+                }
+            },
+            methods: {
+                test(num) {
+                    this.sortType = num;
+                }
+            },
+            computed: {
+                newPersons() {
+                    let { sortType, persons, keyword } = this
+                    console.log(persons);
+                    let arr = persons.filter(item => item.name.indexOf(keyword) !== -1)
+                    console.log(arr);
+                    if (sortType !== 2) {
+                        arr.sort((a, b) => {
+                            // if (sortType == 0) {
+                            //     return a.age - b.age
+                            // } else {
+                            //     return b.age - a.age
+                            // }
+
+                            return sortType === 1 ? a.age - b.age : b.age - a.age
+                        })
+                    }
+                    return arr
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

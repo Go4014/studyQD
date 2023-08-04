@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(person, index) in persons" :key="person.id" @click="newPersons">
+                {{index + 1}} -- {{person.name}} -- {{person.age}}
+            </li>
+        </ul>
+        <!-- {{sortType}} -->
+        <button @click="selectSortType(0)">原序</button>
+        <button @click="selectSortType(1)">升序</button>
+        <button @click="selectSortType(2)">降序</button>
+    </div>
+
+    <script src="./js/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                persons: [
+                    { id: 1, name: 'zs', age: 18 },
+                    { id: 2, name: 'li', age: 20 },
+                    { id: 3, name: 'ww', age: 27 },
+                    { id: 4, name: 'll', age: 24 },
+                ],
+                sortType: 0 // 0:原序 1:升序 2:降序
+            },
+
+            methods: {
+                selectSortType(num) {
+                    this.sortType = num
+                }
+            },
+
+            computed: {
+                newPersons() {
+                    // 解构对象
+                    let { persons, sortType } = this
+                    let arr = persons.filter(item => item.name.indexOf("") !== -1)
+                    if (sortType == 0) {
+                        persons.sort((x, y) => {
+                            return x.id - y.id
+                        })
+                    } else if (sortType == 1) {
+                        persons.sort((x, y) => {
+                            return x.age - y.age
+                        })
+                    } else {
+                        persons.sort((x, y) => {
+                            return y.age - x.age
+                        })
+                    }
+                    return persons
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

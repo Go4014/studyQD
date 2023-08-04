@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Object.defineProperty
+        //这个方法在为对象 添加或者修改 属性为响应式属性（你变我也变 自动变）
+        let obj = {
+            firstName: "cai",
+            lastName: 'xukun'
+        }
+
+        // obj.fullName = "cai-xukun";
+        // console.log(obj);
+        // obj.lastName = "jihaomei"
+        // 第一个参数 确定那个对象  第二个参数 给这个对象添加那个属性
+        //第三个参数 添加啥
+        Object.defineProperty(obj, 'fullName', {
+            // 当访问对象的fullName属性时候 
+            get() {
+                return this.firstName + '-' + this.lastName
+            },
+            //当设置对象的fullName属性的时候
+            set(val) { //"liu-yifei"
+                // array 数组 [1,2,3,4,5]
+                let arr = val.split("-");//["liu","yifei"]
+                this.firstName = arr[0]
+                this.lastName = arr[1]
+            }
+        })
+        obj.firstName = "liu"
+        console.log(obj);
+        obj.fullName = "liu-yifei";
+        console.log(obj);
+
+    </script>
+</body>
+
+</html>

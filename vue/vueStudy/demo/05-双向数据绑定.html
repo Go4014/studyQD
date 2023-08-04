@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <input type="text" :value="msg"> -->
+        <!-- 双向数据绑定 一般情况只针对表单类元素使用 -->
+        <!-- MVVM模型  说的就是双向数据绑定模型 -->
+        <!-- M 代表 model 就是数据 -->
+        <!-- v view 就是页面 -->
+        <!-- vm 代表的是Vue的实例对象  -->
+        <!-- 双向数据绑定：数据可以从data流向页面 页面的数据被更新 也会从页面流向data -->
+        <input type="text" v-model:value="msg">
+        <p>{{msg}}</p>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            // data:{}
+            //函数写法  通过返回值 返回一个对象
+            data() {
+                return {
+                    msg: "小柯基"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

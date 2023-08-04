@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        姓：<input type="text" v-model="firstName">
+        名：<input type="text" v-model="lastName">
+        <p>{{fullName}}</p>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    firstName: 'fan',
+                    lastName: 'dandan',
+                    //    监视的数据得先存在 又没有值不一定 通过对别的数据得监视赋值
+                    fullName: '',
+                }
+            },
+            watch: {
+                firstName: {
+                    //配置对象
+                    // handler：当监视的数据发生改变才会执行
+                    handler(newVal, oldVal) {
+                        this.fullName = newVal + this.lastName
+                    },
+                    // 配置立即执行 是无论监视的属性发生改变与否，都强制执行一次回调
+                    immediate:true//立即
+                },
+                lastName: {
+                    handler(newVal, oldVal) {
+                        this.fullName = this.firstName + newVal
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

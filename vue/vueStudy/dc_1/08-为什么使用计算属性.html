@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="firstName">
+        <input type="text" v-model="lastName">
+        <p>{{getFullName()}}</p>
+        <p>{{getFullName()}}</p>
+        <p>{{getFullName()}}</p>
+        <!-- 方法和计算属性之间的区别  计算属性的效率高-->
+        <!-- 方法执行一次调用一次 -->
+        <!-- 计算属性是有缓存的 第一次调用  下一次直接从缓存满 -->
+        <p>{{fullName}}</p>
+        <p>{{fullName}}</p>
+        <p>{{fullName}}</p>
+
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    firstName: 'cai',
+                    lastName: 'xukun'
+                }
+            },
+            methods: {
+                getFullName() {
+                    console.log("方法被调用了");
+                    return this.firstName + '-' + this.lastName
+
+                }
+            },
+            computed: {
+                fullName() {
+                    console.log("conputed被调用了");
+                    return this.firstName + '-' + this.lastName
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

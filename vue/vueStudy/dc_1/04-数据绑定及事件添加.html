@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 事件 点击事件  鼠标经过 鼠标离开 键盘按下 键盘弹起 -->
+    <div id="app">
+        <!-- 链接标签 -->
+        <!-- <a href="http://www.baidu.com">百度</a> -->
+        <!-- 单项数据绑定 全写 -->
+        <!-- <a v-bind:href="url">点击我去百度</a> -->
+        <!-- 简写 -->
+        <a :href="url">简写的去百度</a>
+        <!-- <button v-on:click="test">点我弹出框</button> -->
+        <button @click="test"></button>
+        <!-- 绑定事件分三步：明确事件源button  确定事件类型click  事件处理程序 函数 弹出框-->
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                url: "http://www.jd.com"
+            },
+            methods: {
+                test() {
+                    alert("还剩两节课")
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>
